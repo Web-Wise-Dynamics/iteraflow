@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  database:
+    image: ${APP_NAME}-db
+    container_name: ${POSTGRES_HOST}
+    build: 
+      context: ./
+      dockerfile: dockerfile
+    env_file: .env.local
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes:
+      - database-volume:/var/lib/postgresql/data
+    command: -p ${POSTGRES_PORT}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -p ${POSTGRES_PORT} -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      start_period: 0s
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  database-volume:
+    name: "iteraflow-db-volume"
