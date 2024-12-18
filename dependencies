@@ -1,0 +1,4 @@
+npm i @mui/material @emotion/react @emotion/styled lucide-react numeral date-fns axios react-dnd react-dnd-html5-backend @wamra/gantt-task-react @mui/x-data-grid
+npm i -D @types/node @types/uuid @types/numeral
+npm i recharts --force
+npm i -D tailwind-merge
